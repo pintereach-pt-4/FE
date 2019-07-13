@@ -1,8 +1,16 @@
-import { LOGIN, LOGIN_FAIL, REGISTER, REGISTER_FAIL } from "../actions/index";
+import {
+  LOGIN,
+  LOGIN_FAIL,
+  REGISTER,
+  REGISTER_FAIL,
+  GET_BOARDS,
+  GET_BOARDS_FAIL
+} from "../actions/index";
 
 const INITIAL_STATE = {
   error: null,
-  message: ""
+  message: "",
+  allBoards: []
 };
 
 const reducers = (state = INITIAL_STATE, action) => {
@@ -22,6 +30,16 @@ const reducers = (state = INITIAL_STATE, action) => {
         ...state
       };
     case REGISTER_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case GET_BOARDS:
+      return {
+        ...state,
+        allBoards: action.payload
+      };
+    case GET_BOARDS_FAIL:
       return {
         ...state,
         error: action.payload

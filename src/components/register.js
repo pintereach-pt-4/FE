@@ -21,16 +21,26 @@ class registerForm extends Component {
   _handleSubmit = e => {
     e.preventDefault();
     this.props.register(this.state.newUser);
+    this.setState({
+      newUser: {
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: ""
+      }
+    });
+    this.props.history.push("/login");
   };
   render() {
     return (
       <div className="form-container">
-        <img
+        {/* <img
           className="bottom-bg"
           src={require("../images/bottom.svg")}
           alt="bottom"
         />
-        <img className="top-bg" src={require("../images/top.svg")} alt="top" />
+        <img className="top-bg" src={require("../images/top.svg")} alt="top" /> */}
         <form className="l-form r-form" onSubmit={this._handleSubmit}>
           <h1 className="form-title">Sign Up</h1>
           <div>

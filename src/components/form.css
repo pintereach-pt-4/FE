@@ -4,8 +4,6 @@
 }
 
 .form-container {
-  background: url("../images/bg.svg") no-repeat;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -106,7 +104,7 @@ input:valid + span {
   color: #ff931e;
 }
 
-.top-bg {
+/* .top-bg {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -117,4 +115,4 @@ input:valid + span {
   z-index: -1;
   bottom: 0;
   right: 650px;
-}
+} */

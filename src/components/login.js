@@ -22,16 +22,17 @@ class loginForm extends Component {
   _handleSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
+    this.props.history.push("/boards");
   };
   render() {
     return (
       <div className="form-container">
-        <img
+        {/* <img
           className="bottom-bg"
           src={require("../images/bottom.svg")}
           alt="bottom"
         />
-        <img className="top-bg" src={require("../images/top.svg")} alt="top" />
+        <img className="top-bg" src={require("../images/top.svg")} alt="top" /> */}
         <form className="l-form" onSubmit={this._handleSubmit}>
           <h1 className="form-title">Login</h1>
           <div>
