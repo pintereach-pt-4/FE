@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  transition: all 0.4s ease-in-out;
+}
+
+.form-container {
+  background: url("../images/bg.svg") no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.form-title {
+  text-align: center;
+  color: #ff931e;
+}
+
+.l-form {
+  background-color: #fff;
+  margin: auto 0;
+  padding: 30px 60px;
+  border-radius: 10px;
+  box-shadow: 2px 1px 4px 2px rgba(51, 51, 51, 0.253);
+  /* position: absolute; */
+}
+
+.l-form input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding: 0px 0px 5px 0px;
+  width: 250px;
+  position: relative;
+}
+.r-form input {
+  margin-bottom: 5px;
+}
+
+.l-form input::placeholder {
+  color: gray;
+}
+
+.l-form div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.l-form div span {
+  pointer-events: none;
+  position: relative;
+  top: 25px;
+  left: 0;
+}
+
+.btn-form {
+  width: 100%;
+  color: #fff;
+  padding: 10px 0;
+  border: none;
+  background: #ff931e;
+  font-size: 1rem;
+  border-radius: 2px;
+  margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+}
+.btn-form:hover {
+  color: #ff931e;
+  background: rgba(252, 247, 247, 0.39);
+  border-left: #ff931e 60px solid;
+  border-right: #ff931e 1px solid;
+  border-radius: 2px;
+}
+
+input:focus,
+input:valid {
+  border-bottom: 2px solid #ff931e;
+}
+input:focus + span,
+input:valid + span {
+  color: rgba(255, 166, 0, 0.527);
+  font-size: 12px;
+  top: 0px;
+  left: 0px;
+  margin: 5px 0;
+}
+
+.form-extra {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 15px;
+  color: gray;
+  text-decoration: none;
+}
+
+.form-extra a {
+  color: rgba(255, 166, 0, 0.527);
+  text-decoration: none;
+}
+.form-extra a:hover {
+  color: #ff931e;
+}
+
+.top-bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0px;
+}
+.bottom-bg {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 650px;
+}
