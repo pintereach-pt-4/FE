@@ -30,17 +30,11 @@ class registerForm extends Component {
         password: ""
       }
     });
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
   render() {
     return (
       <div className="form-container">
-        {/* <img
-          className="bottom-bg"
-          src={require("../images/bottom.svg")}
-          alt="bottom"
-        />
-        <img className="top-bg" src={require("../images/top.svg")} alt="top" /> */}
         <form className="l-form r-form" onSubmit={this._handleSubmit}>
           <h1 className="form-title">Sign Up</h1>
           <div>
@@ -59,7 +53,6 @@ class registerForm extends Component {
             <input
               onChange={this._handleChange}
               type="text"
-              // placeholder="First Name"
               value={this.state.newUser.first_name}
               required
               autoComplete="off"
@@ -71,7 +64,6 @@ class registerForm extends Component {
             <input
               onChange={this._handleChange}
               type="text"
-              // placeholder="Last Name"
               value={this.state.newUser.last_name}
               required
               autoComplete="off"
@@ -83,7 +75,6 @@ class registerForm extends Component {
             <input
               onChange={this._handleChange}
               type="password"
-              // placeholder="password"
               value={this.state.newUser.password}
               required
               autoComplete="off"
@@ -95,7 +86,6 @@ class registerForm extends Component {
             <input
               onChange={this._handleChange}
               type="email"
-              // placeholder="Email"
               value={this.state.email}
               required
               autoComplete="off"
@@ -108,7 +98,7 @@ class registerForm extends Component {
           </button>
           <span className="form-extra">
             <p>
-              Have an account ?<Link to="/login"> Login</Link>
+              Have an account ?<Link to="/"> Login</Link>
             </p>
           </span>
         </form>

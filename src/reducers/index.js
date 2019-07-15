@@ -4,13 +4,18 @@ import {
   REGISTER,
   REGISTER_FAIL,
   GET_BOARDS,
-  GET_BOARDS_FAIL
+  GET_BOARDS_FAIL,
+  ADD_BOARD,
+  ADD_BOARD_FAIL,
+  DELETE_BOARD,
+  DELETE_BOARD_FAIL
 } from "../actions/index";
 
 const INITIAL_STATE = {
   error: null,
   message: "",
-  allBoards: []
+  allBoards: [],
+  user: {}
 };
 
 const reducers = (state = INITIAL_STATE, action) => {
@@ -18,7 +23,8 @@ const reducers = (state = INITIAL_STATE, action) => {
     case LOGIN:
       return {
         ...state,
-        message: action.payload.message
+        message: action.payload.message,
+        user: action.payload.user
       };
     case LOGIN_FAIL:
       return {
@@ -40,6 +46,29 @@ const reducers = (state = INITIAL_STATE, action) => {
         allBoards: action.payload
       };
     case GET_BOARDS_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case ADD_BOARD:
+      return {
+        ...state,
+        allBoards: [...state.allBoards, action.payload[0]]
+      };
+    case ADD_BOARD_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case DELETE_BOARD:
+      const alteredBoards = state.allBoards.filter(
+        board => board.id !== action.payload
+      );
+      return {
+        ...state,
+        allBoards: alteredBoards
+      };
+    case DELETE_BOARD_FAIL:
       return {
         ...state,
         error: action.payload

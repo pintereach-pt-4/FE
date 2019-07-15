@@ -6,7 +6,9 @@ export const login = credentials => dispatch => {
   api
     .post("login", credentials)
     .then(res => {
+      console.log(res);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user_id", res.data.id);
       dispatch({ type: LOGIN, payload: res.data });
     })
     .catch(err => {
@@ -33,10 +35,35 @@ export const getBoards = () => dispatch => {
   api
     .get("boards")
     .then(res => {
-      console.log(res);
       dispatch({ type: GET_BOARDS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: GET_BOARDS_FAIL, payload: err });
+    });
+};
+
+export const ADD_BOARD = `ADD_BOARD`;
+export const ADD_BOARD_FAIL = `ADD_BOARD_FAIL`;
+export const addBoard = board => dispatch => {
+  api
+    .post("boards", board)
+    .then(res => {
+      dispatch({ type: ADD_BOARD, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_BOARD_FAIL, payload: err });
+    });
+};
+
+export const DELETE_BOARD = `DELETE_BOARD`;
+export const DELETE_BOARD_FAIL = `DELETE_BOARD_FAIL`;
+export const deleteBoard = id => dispatch => {
+  api
+    .delete(`boards/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_BOARD, payload: id });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_BOARD_FAIL, payload: err });
     });
 };

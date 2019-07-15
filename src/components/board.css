@@ -11,7 +11,8 @@
 }
 .card-container:hover {
   background-color: #fff;
-  border-left: 13px solid #ff931e;
+  /* border-left: 13px solid #ff931e; */
+  border-left: 13px solid #f97a22;
 }
 
 .card-title {

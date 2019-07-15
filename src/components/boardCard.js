@@ -1,10 +1,27 @@
 import React from "react";
 import "./board.css";
+import { connect } from "react-redux";
+import { deleteBoard } from "../actions";
 
-function boardCard({ title, url, category, description }) {
+function boardCard({
+  title,
+  url,
+  category,
+  description,
+  userID,
+  boardID,
+  createdBy,
+  deleteBoard
+}) {
+  const _handleClick = e => {
+    deleteBoard(boardID);
+  };
   return (
     <div className="card-container">
       <h1 className="card-title">{title}</h1>
+      {userID === createdBy ? (
+        <button onClick={_handleClick}>Delete</button>
+      ) : null}
       <p className="card-article">
         Article:
         <a target="_blank" href={`${url}`} rel="noopener noreferrer">
@@ -20,4 +37,7 @@ function boardCard({ title, url, category, description }) {
   );
 }
 
-export default boardCard;
+export default connect(
+  null,
+  { deleteBoard }
+)(boardCard);

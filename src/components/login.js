@@ -22,7 +22,9 @@ class loginForm extends Component {
   _handleSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
-    this.props.history.push("/boards");
+    setTimeout(() => {
+      this.props.history.push("/boards");
+    }, 3000);
   };
   render() {
     return (

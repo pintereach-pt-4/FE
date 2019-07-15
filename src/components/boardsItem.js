@@ -21,13 +21,16 @@ class boardsItem extends Component {
       return (
         <Layout>
           <div className="card-grid">
-            {this.props.boards.allBoards.map(board => (
+            {this.props.boards.map(board => (
               <BoardCard
                 key={board.id}
                 title={board.title}
                 url={board.url}
                 category={board.category}
                 description={board.description}
+                createdBy={board.created_by_id}
+                userID={this.props.userID}
+                boardID={board.id}
               />
             ))}
           </div>
@@ -37,13 +40,14 @@ class boardsItem extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapState = state => {
   return {
-    boards: state
+    boards: state.allBoards,
+    userID: state.user.id
   };
 };
 
 export default connect(
-  mapStateToProps,
+  mapState,
   { getBoards }
 )(boardsItem);
