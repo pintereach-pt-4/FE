@@ -5,6 +5,7 @@ import Login from "./components/login";
 import Boards from "./components/boardsItem";
 import NewBoard from "./components/newBoard";
 import MyBoards from "./components/myBoards";
+import EditBoard from "./components/editBoard";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -27,6 +28,10 @@ function App() {
         <Route path="/boards" component={Boards} />
         <Route path="/new-board" component={props => <NewBoard {...props} />} />
         <Route path="/my-boards" component={props => <MyBoards {...props} />} />
+        <Route
+          path="/edit-board/:id"
+          component={props => <EditBoard {...props} />}
+        />
       </Router>
     </div>
   );

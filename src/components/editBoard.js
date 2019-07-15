@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addBoard } from "../actions";
 import Layout from "./layout";
 
-class newBoard extends Component {
+import { editBoard, getBoards } from "../actions";
+import { connect } from "react-redux";
+
+class editBoardForm extends Component {
   state = {
     board: {
       title: "",
@@ -12,7 +13,6 @@ class newBoard extends Component {
       description: ""
     }
   };
-
   _handleChange = e => {
     this.setState({
       board: { ...this.state.board, [e.target.name]: e.target.value }
@@ -21,19 +21,12 @@ class newBoard extends Component {
 
   _handleSubmit = e => {
     e.preventDefault();
-    this.props.addBoard(this.state.board);
-    this.setState({
-      board: {
-        title: "",
-        url: "",
-        category: "",
-        description: ""
-      }
-    });
-    this.props.history.push("/boards");
+    this.props.editBoard(this.props.match.params.id, this.state.board);
+    this.props.getBoards();
+    setTimeout(this.props.history.push("/boards"), 1500);
   };
-
   render() {
+    console.log(this.props.board[0]);
     return (
       <Layout>
         <form onSubmit={this._handleSubmit}>
@@ -90,9 +83,20 @@ class newBoard extends Component {
       </Layout>
     );
   }
+  componentDidMount() {
+    this.setState({ board: { ...this.props.board[0] } });
+  }
 }
 
+const mapState = (state, ownProp) => {
+  return {
+    board: state.allBoards.filter(
+      board => `${board.id}` === ownProp.match.params.id
+    )
+  };
+};
+
 export default connect(
-  null,
-  { addBoard }
-)(newBoard);
+  mapState,
+  { editBoard, getBoards }
+)(editBoardForm);

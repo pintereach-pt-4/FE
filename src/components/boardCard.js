@@ -2,6 +2,7 @@ import React from "react";
 import "./board.css";
 import { connect } from "react-redux";
 import { deleteBoard } from "../actions";
+import { Link } from "react-router-dom";
 
 function boardCard({
   title,
@@ -13,14 +14,18 @@ function boardCard({
   createdBy,
   deleteBoard
 }) {
-  const _handleClick = e => {
+  const _handleDelete = e => {
     deleteBoard(boardID);
   };
+
   return (
     <div className="card-container">
       <h1 className="card-title">{title}</h1>
       {userID === createdBy ? (
-        <button onClick={_handleClick}>Delete</button>
+        <div>
+          <button onClick={_handleDelete}>Delete</button>
+          <Link to={`/edit-board/${boardID}`}>Edit</Link>
+        </div>
       ) : null}
       <p className="card-article">
         Article:

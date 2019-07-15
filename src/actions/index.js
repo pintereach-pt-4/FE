@@ -6,7 +6,6 @@ export const login = credentials => dispatch => {
   api
     .post("login", credentials)
     .then(res => {
-      console.log(res);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user_id", res.data.id);
       dispatch({ type: LOGIN, payload: res.data });
@@ -65,5 +64,18 @@ export const deleteBoard = id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: DELETE_BOARD_FAIL, payload: err });
+    });
+};
+
+export const EDIT_BOARD = `EDIT_BOARD`;
+export const EDIT_BOARD_FAIL = `EDIT_BOARD_FAIL`;
+export const editBoard = (id, changes) => dispatch => {
+  api
+    .put(`boards/${id}`, changes)
+    .then(res => {
+      dispatch({ type: EDIT_BOARD, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: EDIT_BOARD_FAIL, payload: err });
     });
 };

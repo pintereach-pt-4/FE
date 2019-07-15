@@ -8,7 +8,9 @@ import {
   ADD_BOARD,
   ADD_BOARD_FAIL,
   DELETE_BOARD,
-  DELETE_BOARD_FAIL
+  DELETE_BOARD_FAIL,
+  EDIT_BOARD,
+  EDIT_BOARD_FAIL
 } from "../actions/index";
 
 const INITIAL_STATE = {
@@ -69,6 +71,15 @@ const reducers = (state = INITIAL_STATE, action) => {
         allBoards: alteredBoards
       };
     case DELETE_BOARD_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case EDIT_BOARD:
+      return {
+        ...state
+      };
+    case EDIT_BOARD_FAIL:
       return {
         ...state,
         error: action.payload

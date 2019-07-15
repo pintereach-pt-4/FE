@@ -10,7 +10,6 @@ class boardsItem extends Component {
     this.props.getBoards();
   }
   render() {
-    console.log(this.props.boards);
     if (!this.props.boards) {
       return (
         <Layout>
