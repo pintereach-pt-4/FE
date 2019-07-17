@@ -24,7 +24,7 @@ class loginForm extends Component {
     this.props.login(this.state.credentials);
     setTimeout(() => {
       this.props.history.push("/boards");
-    }, 3000);
+    }, 5000);
   };
   render() {
     return (

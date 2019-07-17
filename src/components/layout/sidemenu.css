@@ -37,3 +37,13 @@
   text-decoration: none;
   color: orange;
 }
+
+.side-menu-profile-links {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.side-menu-profile-links li {
+  padding: 5px 12px;
+}

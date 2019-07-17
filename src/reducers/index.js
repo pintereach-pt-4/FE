@@ -10,14 +10,17 @@ import {
   DELETE_BOARD,
   DELETE_BOARD_FAIL,
   EDIT_BOARD,
-  EDIT_BOARD_FAIL
+  EDIT_BOARD_FAIL,
+  SET_FILTER
 } from "../actions/index";
 
 const INITIAL_STATE = {
   error: null,
   message: "",
   allBoards: [],
-  user: {}
+  user: {},
+  filter: "Life",
+  tabs: ["All", "Life", "Computer Science", "Productivity", "None", "Other"]
 };
 
 const reducers = (state = INITIAL_STATE, action) => {
@@ -83,6 +86,11 @@ const reducers = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         error: action.payload
+      };
+    case SET_FILTER:
+      return {
+        ...state,
+        filter: action.payload
       };
     default:
       return;

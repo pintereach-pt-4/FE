@@ -6,6 +6,7 @@ export const login = credentials => dispatch => {
   api
     .post("login", credentials)
     .then(res => {
+      console.log(res);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user_id", res.data.user.id);
       dispatch({ type: LOGIN, payload: res.data });
@@ -78,4 +79,10 @@ export const editBoard = (id, changes) => dispatch => {
     .catch(err => {
       dispatch({ type: EDIT_BOARD_FAIL, payload: err });
     });
+};
+
+export const SET_FILTER = "SET_FILTER";
+export const setFilter = filter => dispatch => {
+  console.log("from actions");
+  dispatch({ type: SET_FILTER, payload: filter });
 };

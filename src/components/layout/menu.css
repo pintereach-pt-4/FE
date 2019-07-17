@@ -38,3 +38,16 @@
   width: 100%;
   text-align: center;
 }
+
+.tabs-container {
+  display: flex;
+  margin-right: 1rem;
+}
+.tabs-container p {
+  padding: 2px 12px;
+  cursor: pointer;
+  background: #333;
+}
+.tabs-container p:hover {
+  color: orange;
+}

@@ -17,10 +17,17 @@ class boardsItem extends Component {
         </Layout>
       );
     } else {
+      const filteredBoard = this.props.boards.filter(board => {
+        if (this.props.filter === "All") {
+          return board;
+        } else {
+          return board.category === this.props.filter;
+        }
+      });
       return (
         <Layout>
           <div className="card-grid">
-            {this.props.boards.map(board => (
+            {filteredBoard.map(board => (
               <BoardCard
                 key={board.id}
                 title={board.title}
@@ -42,7 +49,8 @@ class boardsItem extends Component {
 const mapState = state => {
   return {
     boards: state.allBoards,
-    userID: state.user.id
+    userID: state.user.id,
+    filter: state.filter
   };
 };
 

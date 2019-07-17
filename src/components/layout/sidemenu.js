@@ -2,8 +2,15 @@ import React from "react";
 import "./sidemenu.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function sidemenu(props) {
+  const _handleClick = e => {
+    e.preventDefault();
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
   return (
     <div className="side-menu-container">
       <div className="side-menu">
@@ -22,6 +29,14 @@ function sidemenu(props) {
             {" "}
             <Link to="/my-boards">My Boards</Link>
           </li>
+          <div className="side-menu-profile-links">
+            <li>
+              <Link to="/settings">Settings</Link>
+            </li>
+            <li onClick={_handleClick} className="nav-items">
+              Logout
+            </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -33,5 +48,5 @@ const mapState = state => {
     user: state.user
   };
 };
-
-export default connect(mapState)(sidemenu);
+const wrappedSidemenu = withRouter(sidemenu);
+export default connect(mapState)(wrappedSidemenu);
