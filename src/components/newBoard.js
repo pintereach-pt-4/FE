@@ -32,61 +32,78 @@ class newBoard extends Component {
     });
     this.props.history.push("/boards");
   };
+  _handleReset = e => {
+    e.preventDefault();
+    this.setState({
+      board: {
+        title: "",
+        url: "",
+        category: "",
+        description: ""
+      }
+    });
+  };
 
   render() {
     return (
       <Layout>
-        <form onSubmit={this._handleSubmit}>
-          <div>
-            <input
-              onChange={this._handleChange}
-              type="text"
-              name="title"
-              required
-              value={this.state.board.title}
-            />
-            <span>Title</span>
-          </div>
-          <div>
-            <input
-              onChange={this._handleChange}
-              type="url"
-              name="url"
-              required
-              value={this.state.board.url}
-            />
-            <span>Url</span>
-          </div>
-          <div>
-            <select
-              onChange={this._handleChange}
-              name="category"
-              id=""
-              required
-            >
-              <option value="...">...</option>
-              <option value="None">None</option>
-              <option value="Life">Life</option>
-              <option value="Productivity">Productivity</option>
-              <option value="Computer Science">Computer Science</option>
-              <option value="Other">Other</option>
-            </select>
-            <span>Category</span>
-          </div>
-          <div>
-            <input
-              onChange={this._handleChange}
-              type="textarea"
-              name="description"
-              required
-              value={this.state.board.description}
-            />
-            <span>Description</span>
-          </div>
-          <button className="btn btn-form " type="submit">
-            Submit
-          </button>
-        </form>
+        <div className="form-container">
+          <form className="l-form" onSubmit={this._handleSubmit}>
+            <h1 className="form-title">New Board</h1>
+            <div>
+              <input
+                onChange={this._handleChange}
+                type="text"
+                name="title"
+                required
+                value={this.state.board.title}
+              />
+              <span>Title</span>
+            </div>
+            <div>
+              <input
+                onChange={this._handleChange}
+                type="url"
+                name="url"
+                required
+                value={this.state.board.url}
+              />
+              <span>Url</span>
+            </div>
+            <div>
+              <select onChange={this._handleChange} name="category">
+                <option value="">Category...</option>
+                <option value="None">None</option>
+                <option value="Life">Life</option>
+                <option value="Productivity">Productivity</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <textarea
+                onChange={this._handleChange}
+                type="textarea"
+                name="description"
+                required
+                value={this.state.board.description}
+                placeholder="Description"
+              />
+            </div>
+            <div className="btn-container">
+              <button
+                className="btn-form btn-cancel"
+                type="reset"
+                onClick={this._handleReset}
+              >
+                Cancel
+              </button>
+              <button className="btn-form btn-submit " type="submit">
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
       </Layout>
     );
   }

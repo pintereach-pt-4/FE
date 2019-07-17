@@ -24,7 +24,6 @@ function sidemenu(props) {
           </li>
         </ul>
       </div>
-      {props.children}
     </div>
   );
 }

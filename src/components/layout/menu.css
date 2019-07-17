@@ -31,12 +31,10 @@
   width: 100%;
   height: 100%;
 }
-.main-content {
-  padding: 2rem;
-  margin-top: -10%;
-}
 .footer {
   align-self: center;
   color: #fff;
   margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
 }

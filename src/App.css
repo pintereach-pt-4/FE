@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .main-container {
   background: url("./images/bg.svg");
   /* background: url("./images/bg.svg") no-repeat; */
@@ -18,4 +21,8 @@
   z-index: -1;
   bottom: 0;
   right: 650px;
+}
+.main-content {
+  margin-left: 20%;
+  padding: 2rem;
 }

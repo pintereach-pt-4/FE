@@ -1,7 +1,15 @@
 import React from "react";
 import "./menu.css";
 
-function menu() {
+import { withRouter } from "react-router-dom";
+
+function menu(props) {
+  const _handleClick = e => {
+    e.preventDefault();
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
   return (
     <div className="nav-container">
       <nav className="main-nav">
@@ -10,11 +18,13 @@ function menu() {
           <li className="nav-items">Home</li>
           <li className="nav-items">Settings</li>
           <li className="nav-items">Test</li>
-          <li className="nav-items">Logout</li>
+          <li onClick={_handleClick} className="nav-items">
+            Logout
+          </li>
         </ul>
       </nav>
     </div>
   );
 }
 
-export default menu;
+export default withRouter(menu);

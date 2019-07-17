@@ -1,6 +1,6 @@
 .side-menu-container {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  top: 30%;
 }
 
 .side-menu {
@@ -10,11 +10,13 @@
   background: rgb(36, 35, 35);
   height: 70%;
   color: #fff;
-  position: relative;
+  /* position: fixed; */
+  /* position: relative; */
   top: -30px;
   border-radius: 0 6px 6px 0;
   text-align: center;
-  width: 500px;
+  width: 200px;
+  height: 250px;
   /* border-left: 6px solid #f46b23; */
   border-left: 6px solid #f97a22;
 }
