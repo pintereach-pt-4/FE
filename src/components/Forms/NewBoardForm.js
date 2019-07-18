@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Layout from './layout';
-
-import { editBoard, getBoards } from '../actions';
 import { connect } from 'react-redux';
+import { addBoard } from '../../actions';
+import Layout from '../layout';
 
-class editBoardForm extends Component {
+class NewBoardForm extends Component {
 	state = {
 		board: {
 			title: '',
@@ -13,6 +12,7 @@ class editBoardForm extends Component {
 			description: ''
 		}
 	};
+
 	_handleChange = e => {
 		this.setState({
 			board: { ...this.state.board, [e.target.name]: e.target.value }
@@ -21,20 +21,35 @@ class editBoardForm extends Component {
 
 	_handleSubmit = e => {
 		e.preventDefault();
-		this.props.editBoard(this.props.match.params.id, this.state.board);
-		this.props.getBoards();
-		setTimeout(this.props.history.push('/boards'), 1500);
-	};
-	_handleCancel = e => {
-		e.preventDefault();
+		this.props.addBoard(this.state.board);
+		this.setState({
+			board: {
+				title: '',
+				url: '',
+				category: '',
+				description: ''
+			}
+		});
 		this.props.history.push('/boards');
 	};
+	_handleReset = e => {
+		e.preventDefault();
+		this.setState({
+			board: {
+				title: '',
+				url: '',
+				category: '',
+				description: ''
+			}
+		});
+	};
+
 	render() {
 		return (
 			<Layout>
 				<div className="form-container">
 					<form className="l-form" onSubmit={this._handleSubmit}>
-						<h1 className="form-title">Edit Board</h1>
+						<h1 className="form-title">New Board</h1>
 						<div>
 							<input
 								onChange={this._handleChange}
@@ -57,7 +72,7 @@ class editBoardForm extends Component {
 						</div>
 						<div>
 							<select onChange={this._handleChange} name="category">
-								<option value="...">Category...</option>
+								<option value="">Category...</option>
 								<option value="None">None</option>
 								<option value="Life">Life</option>
 								<option value="Productivity">Productivity</option>
@@ -78,12 +93,13 @@ class editBoardForm extends Component {
 						<div className="btn-container">
 							<button
 								className="btn-form btn-cancel"
-								onClick={this._handleCancel}
+								type="reset"
+								onClick={this._handleReset}
 							>
 								Cancel
 							</button>
 							<button className="btn-form btn-submit " type="submit">
-								Done
+								Add
 							</button>
 						</div>
 					</form>
@@ -91,20 +107,9 @@ class editBoardForm extends Component {
 			</Layout>
 		);
 	}
-	componentDidMount() {
-		this.setState({ board: { ...this.props.board[0] } });
-	}
 }
 
-const mapState = (state, ownProp) => {
-	return {
-		board: state.boards.filter(
-			board => `${board.id}` === ownProp.match.params.id
-		)
-	};
-};
-
 export default connect(
-	mapState,
-	{ editBoard, getBoards }
-)(editBoardForm);
+	null,
+	{ addBoard }
+)(NewBoardForm);

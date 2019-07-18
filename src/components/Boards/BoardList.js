@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getBoards } from '../actions';
-import Layout from './layout';
-import BoardCard from './boardCard';
+import { getBoards } from '../../actions';
+import Layout from '../layout';
+import BoardCard from './BoardCard';
 import './board.css';
-import PageControl from './pageControl';
+import PageControl from '../pageControl';
 
-class boardsItem extends Component {
+class BoardList extends Component {
 	state = { skip: 0, limit: 6 };
 	componentDidMount() {
 		this.props.getBoards();
@@ -60,4 +60,4 @@ const mapState = state => {
 export default connect(
 	mapState,
 	{ getBoards }
-)(boardsItem);
+)(BoardList);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BoardCard from './boardCard';
-import Layout from './layout';
+import BoardCard from './BoardCard';
+import Layout from '../layout';
 
-const myBoards = props => {
+const MyBoards = props => {
 	const createdBy = props.boards.filter(
 		board => board.created_by_id === props.userID
 	);
@@ -32,4 +32,4 @@ const mapState = state => {
 		userID: state.user.id
 	};
 };
-export default connect(mapState)(myBoards);
+export default connect(mapState)(MyBoards);

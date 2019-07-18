@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import marked from 'markdown-it';
 let md = marked();
 
-class boardDetails extends Component {
+class BoardDetails extends Component {
 	state = { markDown: '' };
 
 	_handleChange = e => {
@@ -40,4 +40,4 @@ class boardDetails extends Component {
 	}
 }
 
-export default connect(null)(boardDetails);
+export default connect(null)(BoardDetails);

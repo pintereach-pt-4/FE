@@ -1,5 +1,5 @@
 import React from 'react';
-import Tabs from '../../filterTabs';
+import Tabs from './Tabs';
 
 function menu() {
 	return (
