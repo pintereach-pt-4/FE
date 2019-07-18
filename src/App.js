@@ -6,6 +6,7 @@ import Boards from "./components/boardsItem";
 import NewBoard from "./components/newBoard";
 import MyBoards from "./components/myBoards";
 import EditBoard from "./components/editBoard";
+import BoardDetails from "./components/boardDetails";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
           component={props => <Register {...props} />}
         />
         <Route path="/boards" component={Boards} />
+        <Route path="/board-details" component={BoardDetails} />
         <Route path="/new-board" component={props => <NewBoard {...props} />} />
         <Route path="/my-boards" component={props => <MyBoards {...props} />} />
         <Route
