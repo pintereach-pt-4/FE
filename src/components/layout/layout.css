@@ -34,8 +34,13 @@
 	cursor: pointer;
 	background: #333;
 }
+.tabs-container .active {
+	background: #fff;
+	color: #f97a22;
+}
 .tabs-container p:hover {
-	color: orange;
+	color: #f97a22;
+	background: #fff;
 }
 
 /* CSS for the Layout Footer and Content */

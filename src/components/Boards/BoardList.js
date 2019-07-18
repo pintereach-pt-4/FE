@@ -4,33 +4,32 @@ import { getBoards } from '../../actions';
 import Layout from '../layout';
 import BoardCard from './BoardCard';
 import './board.css';
-import PageControl from '../pageControl';
+import Pagination from '../Pagination';
 
 class BoardList extends Component {
-	state = { skip: 0, limit: 6 };
+	state = { perPage: 6, currentPage: 1 };
 	componentDidMount() {
 		this.props.getBoards();
 	}
+	page = number => {
+		this.setState({ currentPage: number });
+	};
 	render() {
-		if (!this.props.boards) {
+		const last = this.state.currentPage * this.state.perPage;
+		const first = last - this.state.perPage;
+		const currentBoards = this.props.boards.slice(first, last);
+		if (this.props.loading) {
 			return (
 				<Layout>
 					<h1>Loading...</h1>
 				</Layout>
 			);
-		} else {
-			const filteredBoard = this.props.boards.filter(board => {
-				if (this.props.filter === 'All') {
-					return board;
-				} else {
-					return board.category === this.props.filter;
-				}
-			});
+		}
+		if (this.props.filter === 'All') {
 			return (
 				<Layout>
-					<PageControl />
 					<div className="card-grid">
-						{filteredBoard.map(board => (
+						{currentBoards.map(board => (
 							<BoardCard
 								key={board.id}
 								title={board.title}
@@ -43,6 +42,40 @@ class BoardList extends Component {
 							/>
 						))}
 					</div>
+					<Pagination
+						total={this.props.boards.length}
+						perPage={this.state.perPage}
+						page={this.page}
+						selected={this.state.currentPage}
+					/>
+				</Layout>
+			);
+		} else {
+			const filteredBoards = this.props.boards.filter(
+				board => board.category === this.props.filter
+			);
+			return (
+				<Layout>
+					<div className="card-grid">
+						{filteredBoards.map(board => (
+							<BoardCard
+								key={board.id}
+								title={board.title}
+								url={board.url}
+								category={board.category}
+								description={board.description}
+								createdBy={board.created_by_id}
+								userID={this.props.userID}
+								boardID={board.id}
+							/>
+						))}
+					</div>
+					{/* <Pagination
+						total={this.props.boards.length}
+						perPage={this.state.perPage}
+						page={this.page}
+						selected={this.state.currentPage}
+					/> */}
 				</Layout>
 			);
 		}
@@ -53,7 +86,8 @@ const mapState = state => {
 	return {
 		boards: state.boards,
 		userID: state.user.id,
-		filter: state.filter
+		filter: state.filter,
+		loading: state.loading
 	};
 };
 

@@ -73,7 +73,6 @@ class NewBoardForm extends Component {
 						<div>
 							<select onChange={this._handleChange} name="category">
 								<option value="">Category...</option>
-								<option value="None">None</option>
 								<option value="Life">Life</option>
 								<option value="Productivity">Productivity</option>
 								<option value="Computer Science">Computer Science</option>

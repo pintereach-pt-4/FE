@@ -6,7 +6,11 @@ function Tabs(props) {
 	return (
 		<div className="tabs-container">
 			{props.tabs.map((tab, i) => (
-				<p onClick={() => props.setFilter(tab)} key={i}>
+				<p
+					className={props.filter === tab ? 'active' : ''}
+					onClick={() => props.setFilter(tab)}
+					key={i}
+				>
 					{tab}
 				</p>
 			))}
@@ -15,7 +19,7 @@ function Tabs(props) {
 }
 
 const mapState = state => {
-	return { tabs: state.tabs };
+	return { tabs: state.tabs, filter: state.filter };
 };
 
 export default connect(

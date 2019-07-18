@@ -24,8 +24,9 @@ class LoginForm extends Component {
 		this.props.login(this.state.credentials);
 		setTimeout(() => {
 			this.props.history.push('/boards');
-		}, 5000);
+		}, 2000);
 	};
+
 	render() {
 		return (
 			<div className="form-container">
@@ -72,7 +73,13 @@ class LoginForm extends Component {
 	}
 }
 
+const mapState = state => {
+	return {
+		log: state.log
+	};
+};
+
 export default connect(
-	null,
+	mapState,
 	{ login }
 )(LoginForm);

@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { logOut } from '../../../actions';
 
 function index(props) {
 	const _handleClick = e => {
 		e.preventDefault();
-		localStorage.removeItem('user_id');
-		localStorage.removeItem('token');
+		props.logOut();
 		props.history.push('/');
 	};
 	return (
@@ -48,4 +48,7 @@ const mapState = state => {
 	};
 };
 const wrappedSideMenu = withRouter(index);
-export default connect(mapState)(wrappedSideMenu);
+export default connect(
+	mapState,
+	{ logOut }
+)(wrappedSideMenu);
