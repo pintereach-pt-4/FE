@@ -29,11 +29,13 @@
 }
 
 .pagination {
-	position: relative;
+	position: fixed;
 	display: flex;
 	justify-content: center;
 	padding: 0;
 	margin-top: 24px;
+	bottom: 60px;
+	left: 49%;
 }
 .pagination li {
 	list-style-type: none;
@@ -68,8 +70,16 @@
 .board-details {
 	width: 30%;
 	margin-right: 3rem;
+	word-break: break-word;
 }
 
+.board-details a {
+	color: rgb(248, 199, 107);
+	text-decoration: none;
+}
+.board-details a:hover {
+	color: #ff931e;
+}
 .board-details textarea {
 	outline: none;
 	border-radius: 4px;
@@ -77,6 +87,8 @@
 	border: none;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
+	word-break: break-word;
+	font-size: 13px;
 }
 
 .note-details {
@@ -118,6 +130,15 @@
 	padding: 0 1rem;
 }
 
+.md-nav a {
+	color: #fff;
+	text-decoration: none;
+}
+.md-nav a:hover {
+	color: #000;
+	text-decoration: none;
+}
+
 .md-content {
 	display: flex;
 	padding: 0 2em;
@@ -132,4 +153,14 @@
 }
 .md-details h1 {
 	text-align: center;
+}
+
+.md-footer {
+	text-align: center;
+	margin-bottom: 10px;
+	padding-left: 100px;
+}
+
+.side-menu-profile-links .logout:hover {
+	color: orange;
 }

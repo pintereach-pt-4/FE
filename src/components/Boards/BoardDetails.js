@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import marked from 'markdown-it';
-import { getBoards, editBoard } from '../../actions/index';
+import { editBoard } from '../../actions/index';
 import { Link } from 'react-router-dom';
-var md = require('markdown-it')('commonmark');
-// let md = marked('markdown-it')();
+let md = require('markdown-it')('commonmark');
 
 class BoardDetails extends Component {
 	state = {
@@ -22,12 +20,14 @@ class BoardDetails extends Component {
 		return (
 			<div className="md-area">
 				<nav className="md-nav">
-					<h1>Notes Markdown</h1>
+					<h1>Pintereach Logo?</h1>
 					<ul>
 						<li>
 							<Link to="/boards">Home</Link>
 						</li>
-						<li>Logout</li>
+						<li>
+							<Link to="/my-boards">My Boards</Link>
+						</li>
 					</ul>
 				</nav>
 				<div className="md-content">
@@ -49,12 +49,17 @@ class BoardDetails extends Component {
 										value={this.state.board.notes}
 										name="notes"
 										id=""
-										cols="50"
+										cols="47"
 										rows="10"
 									/>
 								</div>
 								<div>
-									<button onClick={this._handleSubmit}>Save Board</button>
+									<button
+										className="btn-form submit"
+										onClick={this._handleSubmit}
+									>
+										Save Board
+									</button>
 								</div>
 							</>
 						) : null}

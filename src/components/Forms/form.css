@@ -68,9 +68,8 @@
 }
 .submit:hover {
 	color: #ff931e;
-	background: rgba(252, 247, 247, 0.39);
+	background: #fff;
 	border-left: #ff931e 60px solid;
-	border-right: #ff931e 1px solid;
 }
 
 input:focus,

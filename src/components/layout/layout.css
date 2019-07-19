@@ -57,6 +57,7 @@
 	margin-bottom: 1rem;
 	width: 100%;
 	text-align: center;
+	padding-left: 100px;
 }
 
 /* CSS for the Side Menu */
@@ -94,6 +95,9 @@
 	text-decoration: none;
 	color: orange;
 }
+.side-menu li a:hover {
+	color: #fff;
+}
 
 .side-menu-profile-links {
 	display: flex;
@@ -103,8 +107,4 @@
 
 .side-menu-profile-links li {
 	padding: 5px 12px;
-}
-
-/* animate later*/
-.side-menu:hover {
 }

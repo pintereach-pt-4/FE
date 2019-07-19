@@ -32,7 +32,7 @@ function index(props) {
 						<li>
 							<Link to="/settings">Settings</Link>
 						</li>
-						<li onClick={_handleClick} className="nav-items">
+						<li className="logout" onClick={_handleClick}>
 							Logout
 						</li>
 					</div>

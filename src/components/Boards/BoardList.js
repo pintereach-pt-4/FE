@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBoards } from '../../actions';
-import { Link } from 'react-router-dom';
 import Layout from '../layout';
 import BoardCard from './BoardCard';
 import './board.css';

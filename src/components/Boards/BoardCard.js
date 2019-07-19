@@ -18,27 +18,36 @@ function BoardCard({
 		deleteBoard(boardID);
 	};
 
+	const _handleExcerpt = text => {
+		if (text.length >= 100) {
+			return text.slice(0, 100).concat('...');
+		}
+		return text;
+	};
+
 	return (
 		<div className="card-container">
 			<h1 className="card-title">{title}</h1>
-			{userID === createdBy ? (
-				<div>
-					<button onClick={_handleDelete}>Delete</button>
-					<Link to={`/edit-board/${boardID}`}>Edit</Link>
-				</div>
-			) : null}
 			<p className="card-article">
 				Article:
 				<a target="_blank" href={`${url}`} rel="noopener noreferrer">
 					Read
 				</a>
 			</p>
-			<p>{description}</p>
+			<p>{_handleExcerpt(description)}</p>
 			<p className="card-category-container">
 				Category:
 				<span className="card-category">{category}</span>
 			</p>
-			<Link to={`/board-details/${boardID}`}>View Board</Link>
+			<div className="card-buttons">
+				<Link to={`/board-details/${boardID}`}>View Board</Link>
+				{userID === createdBy ? (
+					<>
+						<button onClick={_handleDelete}>Delete</button>
+						<Link to={`/edit-board/${boardID}`}>Edit</Link>
+					</>
+				) : null}
+			</div>
 		</div>
 	);
 }
