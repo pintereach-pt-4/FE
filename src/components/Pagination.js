@@ -12,9 +12,12 @@ const Pagination = ({ total, perPage, page, selected }) => {
 				return (
 					<li key={number}>
 						<a
-							href
+							href="!#"
 							className={selected === number ? 'active' : ''}
-							onClick={() => page(number)}
+							onClick={e => {
+								e.preventDefault();
+								page(number);
+							}}
 						>
 							{number}
 						</a>

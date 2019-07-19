@@ -28,8 +28,8 @@ const MyBoards = props => {
 };
 const mapState = state => {
 	return {
-		boards: state.boards,
-		userID: state.user.id
+		boards: state.Boards.boards,
+		userID: state.Auth.user.id
 	};
 };
 export default connect(mapState)(MyBoards);

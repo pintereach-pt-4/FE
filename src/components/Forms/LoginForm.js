@@ -75,13 +75,7 @@ class LoginForm extends Component {
 	}
 }
 
-const mapState = state => {
-	return {
-		log: state.log
-	};
-};
-
 export default connect(
-	mapState,
+	null,
 	{ login }
 )(LoginForm);

@@ -84,10 +84,10 @@ class BoardList extends Component {
 
 const mapState = state => {
 	return {
-		boards: state.boards,
-		userID: state.user.id,
-		filter: state.filter,
-		loading: state.loading
+		boards: state.Boards.boards,
+		userID: state.Auth.user.id,
+		filter: state.Filter.filter,
+		loading: state.Boards.loading
 	};
 };
 

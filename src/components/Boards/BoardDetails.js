@@ -89,10 +89,10 @@ class BoardDetails extends Component {
 
 const mapState = (state, ownProp) => {
 	return {
-		board: state.boards.filter(
+		board: state.Boards.boards.filter(
 			board => `${board.id}` === ownProp.match.params.id
 		),
-		user: state.user
+		user: state.Auth.user
 	};
 };
 

@@ -19,7 +19,7 @@ function Tabs(props) {
 }
 
 const mapState = state => {
-	return { tabs: state.tabs, filter: state.filter };
+	return { tabs: state.Filter.tabs, filter: state.Filter.filter };
 };
 
 export default connect(

@@ -44,7 +44,7 @@ function index(props) {
 
 const mapState = state => {
 	return {
-		user: state.user
+		user: state.Auth.user
 	};
 };
 const wrappedSideMenu = withRouter(index);
