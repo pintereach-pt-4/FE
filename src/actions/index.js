@@ -6,13 +6,12 @@ export const LOGIN_END = `LOGIN_END`;
 export const LOGIN_FAIL = `LOGIN_FAIL`;
 export const login = credentials => dispatch => {
 	dispatch({ type: LOGIN_START });
-	api
+	return api()
 		.post('login', credentials)
 		.then(res => {
 			localStorage.setItem('token', res.data.token);
 			localStorage.setItem('user_id', res.data.user.id);
 			dispatch({ type: LOGIN, payload: res.data });
-			dispatch({ type: LOGIN_END });
 		})
 		.catch(err => {
 			dispatch({ type: LOGIN_FAIL, payload: err });
@@ -29,7 +28,7 @@ export const logOut = () => dispatch => {
 export const REGISTER = `REGISTER`;
 export const REGISTER_FAIL = `REGISTER_FAIL`;
 export const register = credentials => dispatch => {
-	api
+	return api()
 		.post('register', credentials)
 		.then(res => {
 			dispatch({ type: REGISTER, payload: res.data });
@@ -45,7 +44,7 @@ export const GET_BOARDS_END = `GET_BOARDS_END`;
 export const GET_BOARDS_FAIL = `GET_BOARDS_FAIL`;
 export const getBoards = () => dispatch => {
 	dispatch({ type: GET_BOARDS_START });
-	api
+	api()
 		.get(`boards`)
 		.then(res => {
 			dispatch({ type: GET_BOARDS, payload: res.data });
@@ -59,7 +58,7 @@ export const getBoards = () => dispatch => {
 export const ADD_BOARD = `ADD_BOARD`;
 export const ADD_BOARD_FAIL = `ADD_BOARD_FAIL`;
 export const addBoard = board => dispatch => {
-	api
+	return api()
 		.post('boards', board)
 		.then(res => {
 			dispatch({ type: ADD_BOARD, payload: res.data });
@@ -72,7 +71,7 @@ export const addBoard = board => dispatch => {
 export const DELETE_BOARD = `DELETE_BOARD`;
 export const DELETE_BOARD_FAIL = `DELETE_BOARD_FAIL`;
 export const deleteBoard = id => dispatch => {
-	api
+	api()
 		.delete(`boards/${id}`)
 		.then(res => {
 			dispatch({ type: DELETE_BOARD, payload: id });
@@ -85,7 +84,7 @@ export const deleteBoard = id => dispatch => {
 export const EDIT_BOARD = `EDIT_BOARD`;
 export const EDIT_BOARD_FAIL = `EDIT_BOARD_FAIL`;
 export const editBoard = (id, changes) => dispatch => {
-	api
+	api()
 		.put(`boards/${id}`, changes)
 		.then(res => {
 			dispatch({ type: EDIT_BOARD, payload: res.data });

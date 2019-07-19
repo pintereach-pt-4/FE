@@ -38,6 +38,7 @@ function BoardCard({
 				Category:
 				<span className="card-category">{category}</span>
 			</p>
+			<Link to={`/board-details/${boardID}`}>View Board</Link>
 		</div>
 	);
 }

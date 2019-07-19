@@ -1,7 +1,17 @@
 import React from 'react';
 
-const index = () => {
-	return <div>This is the protected route</div>;
-};
+import { Route, Redirect } from 'react-router-dom';
+const index = ({ component: Component, ...rest }) => (
+	<Route
+		{...rest}
+		render={props =>
+			localStorage.getItem('token') ? (
+				<Component {...props} />
+			) : (
+				<Redirect to="/" />
+			)
+		}
+	/>
+);
 
 export default index;

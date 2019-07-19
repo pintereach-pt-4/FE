@@ -21,10 +21,12 @@ class LoginForm extends Component {
 	};
 	_handleSubmit = e => {
 		e.preventDefault();
-		this.props.login(this.state.credentials);
-		setTimeout(() => {
-			this.props.history.push('/boards');
-		}, 2000);
+		this.props
+			.login(this.state.credentials)
+			.then(res => this.props.history.push('/boards'))
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	render() {
@@ -61,7 +63,7 @@ class LoginForm extends Component {
 						/>
 					</div>
 
-					<button className="btn btn-form" type="submit">
+					<button className="btn-form submit" type="submit">
 						Login
 					</button>
 					<span className="form-extra">

@@ -22,7 +22,7 @@ import {
 export const INITIAL_STATE = {
 	error: null,
 	loading: false,
-	log: false,
+	log: null,
 	message: '',
 	boards: [],
 	user: {},
@@ -35,13 +35,13 @@ const reducers = (state = INITIAL_STATE, action) => {
 		case LOGIN_START: {
 			return {
 				...state,
-				log: true
+				log: false
 			};
 		}
 		case LOGIN_END: {
 			return {
 				...state,
-				log: false
+				log: true
 			};
 		}
 		case LOGIN:

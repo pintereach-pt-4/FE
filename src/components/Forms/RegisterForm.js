@@ -20,7 +20,12 @@ class RegisterForm extends Component {
 	};
 	_handleSubmit = e => {
 		e.preventDefault();
-		this.props.register(this.state.newUser);
+		this.props
+			.register(this.state.newUser)
+			.then(res => this.props.history.push('/'))
+			.catch(err => {
+				console.log(err);
+			});
 		this.setState({
 			newUser: {
 				username: '',
@@ -30,7 +35,6 @@ class RegisterForm extends Component {
 				password: ''
 			}
 		});
-		this.props.history.push('/');
 	};
 	render() {
 		return (

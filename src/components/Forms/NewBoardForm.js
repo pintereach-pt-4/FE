@@ -9,7 +9,8 @@ class NewBoardForm extends Component {
 			title: '',
 			url: '',
 			category: '',
-			description: ''
+			description: '',
+			notes: ''
 		}
 	};
 
@@ -21,7 +22,12 @@ class NewBoardForm extends Component {
 
 	_handleSubmit = e => {
 		e.preventDefault();
-		this.props.addBoard(this.state.board);
+		this.props
+			.addBoard(this.state.board)
+			.then(res => this.props.history.push('/boards'))
+			.catch(err => {
+				console.log(err);
+			});
 		this.setState({
 			board: {
 				title: '',
@@ -30,7 +36,6 @@ class NewBoardForm extends Component {
 				description: ''
 			}
 		});
-		this.props.history.push('/boards');
 	};
 	_handleReset = e => {
 		e.preventDefault();

@@ -7,6 +7,7 @@ import NewBoard from './components/Forms/NewBoardForm';
 import MyBoards from './components/Boards/MyBoards';
 import EditBoard from './components/Forms/EditBoardForm';
 import BoardDetails from './components/Boards/BoardDetails';
+import PrivateRoute from './components/ProtectedRoute';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -26,14 +27,11 @@ function App() {
 					exact
 					component={props => <Register {...props} />}
 				/>
-				<Route path="/boards" component={Boards} />
-				<Route path="/board-details" component={BoardDetails} />
-				<Route path="/new-board" component={props => <NewBoard {...props} />} />
-				<Route path="/my-boards" component={props => <MyBoards {...props} />} />
-				<Route
-					path="/edit-board/:id"
-					component={props => <EditBoard {...props} />}
-				/>
+				<PrivateRoute path="/boards" component={Boards} />
+				<PrivateRoute path="/board-details/:id" component={BoardDetails} />
+				<PrivateRoute path="/new-board" component={NewBoard} />
+				<PrivateRoute path="/my-boards" component={MyBoards} />
+				<PrivateRoute path="/edit-board/:id" component={EditBoard} />
 			</Router>
 		</div>
 	);
