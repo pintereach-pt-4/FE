@@ -2,7 +2,7 @@ import { SET_FILTER } from '../actions/index';
 
 const INIT = {
 	filter: 'All',
-	tabs: ['All', 'Life', 'Computer Science', 'Productivity', 'None', 'Other']
+	tabs: ['All', 'Life', 'Computer Science', 'Productivity', 'General', 'Other']
 };
 
 export default function filterReducer(state = INIT, action) {
