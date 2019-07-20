@@ -22,7 +22,7 @@ class RegisterForm extends Component {
 		e.preventDefault();
 		this.props
 			.register(this.state.newUser)
-			.then(res => this.props.history.push('/'))
+			.then(res => setTimeout(()=>{this.props.history.push('/')},1500))
 			.catch(err => {
 				console.log(err);
 			});
@@ -97,7 +97,7 @@ class RegisterForm extends Component {
 						/>
 						<span>Email</span>
 					</div>
-					<button className="btn btn-form " type="submit">
+					<button className="btn-form submit " type="submit">
 						register
 					</button>
 					<span className="form-extra">

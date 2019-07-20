@@ -11,36 +11,43 @@ export const login = credentials => dispatch => {
 		.then(res => {
 			localStorage.setItem('token', res.data.token);
 			localStorage.setItem('user_id', res.data.user.id);
-			dispatch({ type: LOGIN, payload: res.data });
+			dispatch({ type: LOGIN, payload: res.data })
+			setTimeout(()=>{dispatch({type: LOGIN_END})}, 2000)
 		})
 		.catch(err => {
 			dispatch({ type: LOGIN_FAIL, payload: err });
+			setTimeout(()=>{dispatch({type: LOGIN_END})}, 3000)
 		});
-};
-
-export const LOGOUT = 'LOGOUT';
-export const logOut = () => dispatch => {
-	localStorage.removeItem('token');
-	localStorage.removeItem('user_id');
-	dispatch({ type: LOGOUT });
-};
-
-export const REGISTER = `REGISTER`;
-export const REGISTER_FAIL = `REGISTER_FAIL`;
-export const register = credentials => dispatch => {
-	return api()
+	};
+	
+	export const LOGOUT = 'LOGOUT';
+	export const logOut = () => dispatch => {
+		localStorage.removeItem('token');
+		localStorage.removeItem('user_id');
+		dispatch({ type: LOGOUT });
+	};
+	
+	export const REGISTER = `REGISTER`;
+	export const REGISTER_START = `REGISTER_START`;
+	export const REGISTER_END = `REGISTER_END`;
+	export const REGISTER_FAIL = `REGISTER_FAIL`;
+	export const register = credentials => dispatch => {
+		dispatch({type:REGISTER_START})
+		return api()
 		.post('register', credentials)
 		.then(res => {
 			dispatch({ type: REGISTER, payload: res.data });
+			dispatch({type: REGISTER_END})
 		})
 		.catch(err => {
 			dispatch({ type: REGISTER_FAIL, payload: err });
+			dispatch({type: REGISTER_END})
 		});
-};
-
-export const GET_BOARDS = `GET_BOARDS`;
-export const GET_BOARDS_START = `GET_BOARDS_START`;
-export const GET_BOARDS_END = `GET_BOARDS_END`;
+	};
+	
+	export const GET_BOARDS = `GET_BOARDS`;
+	export const GET_BOARDS_START = `GET_BOARDS_START`;
+	export const GET_BOARDS_END = `GET_BOARDS_END`;
 export const GET_BOARDS_FAIL = `GET_BOARDS_FAIL`;
 export const getBoards = () => dispatch => {
 	dispatch({ type: GET_BOARDS_START });

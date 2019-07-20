@@ -154,3 +154,18 @@ input:valid + span {
 	font-size: 15px;
 	color: #ff931e;
 }
+
+.form-message{
+	text-align: center;
+	margin: 4px 0;
+	display: none;
+}
+.error{
+	color: red;
+	transition: none;
+}
+.success{
+	color: rgb(42, 185, 107);
+	transition: none;
+	text-shadow: rgba(51, 51, 51, 0.116) 1px 1px 1px
+}

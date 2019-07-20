@@ -15,7 +15,7 @@ function index(props) {
 			<div className="side-menu">
 				<div className="side-menu-profile">
 					<h1>{props.user.username}</h1>
-					<p>{props.user.firstName}</p>
+					{/* <p>{props.user.firstName}</p> */}
 				</div>
 				<ul className="side-menu-links">
 					<li className="side-menu-item">

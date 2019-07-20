@@ -37,7 +37,14 @@ class BoardDetails extends Component {
 							<p>{this.state.board.description}</p>
 							<p>Category: {this.state.board.category}</p>
 							<p>
-								Article <a href={this.state.board.url}>Read</a>
+								Article{' '}
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={this.state.board.url}
+								>
+									Read
+								</a>
 							</p>
 						</div>
 						{this.props.user.id === this.state.board.created_by_id ? (

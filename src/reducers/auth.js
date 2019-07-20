@@ -5,14 +5,18 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	REGISTER,
-	REGISTER_FAIL
+	REGISTER_FAIL,
+	REGISTER_START,
+	REGISTER_END
 } from '../actions/index';
 
 const INIT = {
-	log: false,
+	logging: false,
 	user: {},
 	error: null,
-	message: ''
+	message: '',
+	registering: false,
+	status: ""
 };
 
 export default function authReducer(state = INIT, action) {
@@ -26,34 +30,55 @@ export default function authReducer(state = INIT, action) {
 		case LOGIN_END: {
 			return {
 				...state,
-				logging: false
+				logging: false,
+				message: '',
+				status:""
 			};
 		}
 		case LOGIN:
 			return {
 				...state,
-				message: action.payload.message,
-				user: action.payload.user
+				message: 'Success',
+				user: action.payload.user,
+				status: "success",
+				logging: false,
 			};
 		case LOGIN_FAIL:
 			return {
 				...state,
-				error: action.payload
+				message: "Invalid Credentials",
+				status: 'error',
+				logging: false
 			};
 		case LOGOUT:
 			return {
 				...state,
 				user: {}
 			};
-		case REGISTER:
-			return {
-				...state
-			};
-		case REGISTER_FAIL:
+		case REGISTER_START:
 			return {
 				...state,
-				error: action.payload
+				registering: true
 			};
+		case REGISTER:
+			return {
+				...state,
+				registering: false,
+				message:'Success'
+			};
+			case REGISTER_FAIL:
+				return {
+					...state,
+					error: action.payload,
+					registering: false,
+					message:'Error'
+			};
+			case REGISTER_END:
+				return {
+					...state,
+					message:"",
+					registering: false,
+			}
 		default:
 			return state;
 	}

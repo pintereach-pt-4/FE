@@ -23,7 +23,7 @@ class LoginForm extends Component {
 		e.preventDefault();
 		this.props
 			.login(this.state.credentials)
-			.then(res => this.props.history.push('/boards'))
+			.then(res => setTimeout(()=>{this.props.history.push('/boards')},1500))
 			.catch(err => {
 				console.log(err);
 			});
@@ -62,7 +62,9 @@ class LoginForm extends Component {
 							name="password"
 						/>
 					</div>
-
+					<div className={`form-message ${this.props.status}`}>
+						{this.props.message}
+					</div>
 					<button className="btn-form submit" type="submit">
 						Login
 					</button>
@@ -75,7 +77,14 @@ class LoginForm extends Component {
 	}
 }
 
+const mapState =state=>{
+	return {
+		message: state.Auth.message,
+		status: state.Auth.status
+	}
+}
+
 export default connect(
-	null,
+	mapState,
 	{ login }
 )(LoginForm);
