@@ -1,110 +1,151 @@
 /* CSS for the Navigation */
 .nav-container {
-	width: 100%;
-	margin: 0;
-	justify-self: flex-start;
+  width: 100%;
+  margin: 0;
+  justify-self: flex-start;
 }
 
 .main-nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: #fff;
-	width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  padding: 1rem 0 0 0;
 }
 .nav-logo {
-	padding: 0 0 0 2rem;
-	margin: 0;
+  padding: 0 0 0 2rem;
+  margin: 0;
+  width: 30%;
 }
+.nav-logo a {
+  color: #fff;
+}
+.search-nav {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-nav input:focus,
+.search-nav input:valid {
+  border-bottom: none;
+}
+.search-bar {
+  width: 80%;
+  border: none;
+  outline: none;
+  border-bottom: none;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  padding: 4px 0 4px 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.user-nav {
+  width: 30%;
+  display: flex;
+}
+
+.user-nav li {
+  list-style: none;
+  padding: 0 5px;
+}
+
+.user-nav li a {
+  color: white;
+}
+.user-nav .logout {
+  cursor: pointer;
+}
+
 .nav-links {
-	display: flex;
+  display: flex;
 }
 
 .nav-items {
-	list-style: none;
-	padding: 0 2rem;
+  list-style: none;
+  padding: 0 2rem;
 }
 /* CSS for the Tabs in the Menu */
 .tabs-container {
-	display: flex;
-	margin-right: 1rem;
+  display: flex;
+  margin-right: 1rem;
 }
 .tabs-container p {
-	padding: 2px 12px;
-	cursor: pointer;
-	background: #333;
+  padding: 2px 12px;
+  cursor: pointer;
+  background: #333;
 }
 .tabs-container .active {
-	background: #fff;
-	color: #f97a22;
+  background: #fff;
+  color: #f97a22;
 }
 .tabs-container p:hover {
-	color: #f97a22;
-	background: #fff;
+  color: #f97a22;
+  background: #fff;
 }
 
 /* CSS for the Layout Footer and Content */
 .layout-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 .footer {
-	align-self: center;
-	color: #fff;
-	margin-bottom: 1rem;
-	width: 100%;
-	text-align: center;
-	padding-left: 100px;
+  align-self: center;
+  color: #fff;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 /* CSS for the Side Menu */
 .side-menu-container {
-	position: fixed;
-	top: 30%;
+  position: fixed;
+  top: 30%;
 }
 
 .side-menu {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background: rgb(36, 35, 35);
-	height: 70%;
-	color: #fff;
-	/* position: fixed; */
-	/* position: relative; */
-	top: -30px;
-	border-radius: 0 6px 6px 0;
-	text-align: center;
-	width: 200px;
-	height: 250px;
-	/* border-left: 6px solid #f46b23; */
-	border-left: 6px solid #f97a22;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(36, 35, 35);
+  height: 70%;
+  color: #fff;
+  /* position: fixed; */
+  /* position: relative; */
+  top: -30px;
+  border-radius: 0 6px 6px 0;
+  text-align: center;
+  width: 200px;
+  height: 250px;
+  /* border-left: 6px solid #f46b23; */
+  border-left: 6px solid #f97a22;
 }
 .side-menu-links {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .side-menu li {
-	list-style-type: none;
-	padding: 8px 0;
+  list-style-type: none;
+  padding: 8px 0;
 }
 .side-menu li a {
-	text-decoration: none;
-	color: orange;
+  text-decoration: none;
+  color: orange;
 }
 .side-menu li a:hover {
-	color: #fff;
+  color: #fff;
 }
 
 .side-menu-profile-links {
-	display: flex;
-	justify-content: center;
-	cursor: pointer;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .side-menu-profile-links li {
-	padding: 5px 12px;
+  padding: 5px 12px;
 }
